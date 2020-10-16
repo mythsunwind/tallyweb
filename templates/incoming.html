@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+	   <meta charset="utf-8">
+	   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	   <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}">
+      	   <script type="text/javascript" src="{{ url_for('static', filename = 'incoming.js') }}" defer></script>
+           <style>
+html, body {
+  height: 100%;
+}
+
+.hide {
+    display: none;
+}
+	   </style>
+	   <title>Tallyweb - Historie</title>
+   </head>
+   <body>
+
+<div class="container">
+
+	<h1>Jede Zeile in der Liste entspricht einer reingegangenen Person</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Zeit</th>
+    </tr>
+  </thead>
+  <tbody id="table-body">
+    <tr>
+      <td>Daten werden geladen...</td>
+    </tr>
+  </tbody>
+</table>
+
+</div>
+
+   </body>
+</html>

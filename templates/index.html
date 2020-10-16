@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+	   <meta charset="utf-8">
+	   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	   <link rel="stylesheet" href="{{ url_for('static', filename = 'bootstrap.min.css') }}">
+      	   <script type="text/javascript" src="{{ url_for('static', filename = 'custom.js') }}" defer></script>
+           <style>
+html, body {
+  height: 100%;
+}
+
+.hide {
+    display: none;
+}
+	   </style>
+	   <title>Tallyweb</title>
+   </head>
+   <body>
+	   <!--Navbar-->
+<nav class="navbar navbar-dark bg-primary">
+
+  <!-- Navbar brand -->
+  <a class="navbar-brand" href="#">Gästezähler</a>
+
+  <!-- Collapse button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar1"
+    aria-controls="navbar1" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon" data-toggle="collapse" data-target="#navbar1"></span></button>
+
+  <!-- Collapsible content -->
+  <div class="collapse navbar-collapse" id="navbar1">
+
+    <!-- Links -->
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Gästezähler</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tallyweb/incoming">Historie (Reingegangene)</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/tallyweb/outgoing">Historie (Rausgegangene)</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" onclick="mute()">Ton an/aus</a>
+      </li>
+    </ul>
+    <!-- Links -->
+
+  </div>
+  <!-- Collapsible content -->
+
+</nav>
+<!--/.Navbar-->
+
+<div class="alert alert-danger alert-dismissible fade" role="alert">
+	<strong id="alert-title">Holy guacamole!</strong> <span id="alert-text">You should check in on some of those fields below.</span>
+	<button type="button" class="close" data-dismiss="alert" aria-label="Close" onclick="document.querySelector('.alert').classList.remove('show')">
+		<span aria-hidden="true">&times;</span>
+	</button>
+</div>
+
+<div class="container">
+
+	<div class="card mt-2 mb-4 text-center">
+		<div class="card-header">Aktuelle Gäste</div>
+		<div class="card-body" style="height: 200px">
+			<p class="card-text">
+				<h1 class="display-1 text-center" id="guests-number">-</h1>
+				<div id="guests-spinner" class="text-center hide">
+					<div class="spinner-border text-primary" role="status">
+						<span class="sr-only">Loading...</span>
+					</div>
+				</div>
+				<small class="text-muted">Aktualisiert automatisch in: <span width="10px" id="update-countdown">-</span></small>
+			</p>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-1"></div>
+		<div class="col-2"><span id="incoming-number">-</span></div>
+		<div class="col-6">Personen reingegangen</div>
+		<div class="col-3">
+			<button href="#" id="plus-button" class="btn btn-success btn-block" onclick="enter()">
+				<span id="plus-text">+</span>
+				<span id="plus-spinner" class="spinner-border spinner-border-sm hide" role="status" aria-hidden="true"></span>
+			</button>
+		</div>
+	</div>
+
+	<div class="row mt-4">
+		<div class="col-1">-</div>
+		<div class="col-2" id="outgoing-number">-</div>
+		<div class="col-6">Personen rausgegangen</div>
+		<div class="col-3">
+			<button href="#" id="minus-button" class="btn btn-danger btn-block" onclick="exit()">
+				<span id="minus-text">-</span>
+				<span id="minus-spinner" class="spinner-border spinner-border-sm hide" role="status" aria-hidden="true"></span>
+			</button>
+		</div>
+	</div>
+
+</div>
+
+   </body>
+</html>
